@@ -1,0 +1,35 @@
+.register-input-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.register-label {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 7px;
+  width: 40%; /* set the label width to 30% */
+}
+.register-container {
+    max-width: 400px;
+    margin: 82px auto;
+    padding: 28px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.register-input {
+    width: 76%;
+    height: 21px;
+    padding: 9px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 23px;
+}
+
+.register-button{
+    height: 50px;
+    width: 70px;
+    background-color: greenyellow;
+}
