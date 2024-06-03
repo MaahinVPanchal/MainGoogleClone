@@ -1,35 +1,56 @@
+.register {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Align items vertically */
+  margin-top: 50px; /* Add some top margin for spacing */
+}
+
+.register-container {
+  max-width: 500px; /* Decreased max-width of the container */
+  padding: 20px; /* Reduced padding for a sleeker look */
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease; /* Added transition for smoother changes */
+  
+}
+
 .register-input-container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: 18px;
 }
+
 .register-label {
   font-size: 20px;
   font-weight: bold;
-  margin-right: 7px;
-  width: 40%; /* set the label width to 30% */
-}
-.register-container {
-    max-width: 400px;
-    margin: 82px auto;
-    padding: 28px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .register-input {
-    width: 76%;
-    height: 21px;
-    padding: 9px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 23px;
+  padding: 9px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: all 0.3s ease; /* Added transition for smoother changes */
 }
 
-.register-button{
-    height: 50px;
-    width: 70px;
-    background-color: greenyellow;
+.register-button {
+  height: 50px;
+  background-color: greenyellow;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease; /* Added transition for smoother changes */
+}
+
+.register-image {
+  margin-left: 0; /* Initially set margin-left to 0 */
+  transition: margin-left 0.3s ease; /* Added transition for margin-left property */
+}
+
+.register:hover .register-image {
+  margin-left: 20px; /* Move the image to the right on hover */
+}
+
+.illustration-attribution {
+  max-width: 100%; /* Ensure the image doesn't exceed its container */
 }

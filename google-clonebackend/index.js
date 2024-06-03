@@ -39,14 +39,14 @@ app.post("/login", async (req, res) => {
       if (isValidPassword) {
         res.send({ message: "Login successful", user });
       } else {
-        res.status(401).send({ message: "Invalid password" });
+        res.redirect("/login?error=invalid_password");
       }
     } else {
-      res.status(404).send({ message: "User not registered" });
+      res.redirect("/login?error=user_not_found");
     }
   } catch (err) {
-    console.error("Error logging in user:", err.stack); // log the error stack
-    res.status(500).send({ message: "Internal server error" });
+    console.error("Error logging in user:", err.stack);
+    res.redirect("/login?error=internal_server_error");
   }
 });
 

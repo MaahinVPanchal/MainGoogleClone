@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import axios from "axios";
+import loginImage from "../assets/undraw_login.svg";
 
 const Login = ({ onLogin }) => {
   const navigate = useNavigate();
@@ -13,15 +14,28 @@ const Login = ({ onLogin }) => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    // Authentication logic here
-    onLogin();
-    navigate("/"); // Redirect to home page after successful login
+    login(); // Call login function instead of onLogin
   };
 
-  const login = ()=>{
-    axios.post("http://localhost:9002/login",user)
-    .then(res=>alert(res.data.message))
-  }
+  const login = () => {
+    axios
+      .post("http://localhost:9002/login", user)
+      .then((res) => {
+        navigate("/");
+        alert(res.data.message);
+        if (res.data.success) {
+          onLogin(); // Call onLogin only if login is successful
+          console.log("Login successful");
+        } else {
+          console.error("Login failed:", res.data.message);
+        }
+      })
+      .catch((error) => {
+        console.error("Login error:", error);
+        alert("An error occurred during login.");
+      });
+  };
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUser({
@@ -29,31 +43,47 @@ const Login = ({ onLogin }) => {
       [name]: value,
     });
   };
+
   return (
     <div className="login-container">
+      <img src={loginImage} alt="Login illustration" className="login-image" />
       <h1 className="login-header">Login</h1>
       <form onSubmit={handleLogin} className="login-form">
-        {/* Login form fields */}
-        <input
-          type="email"
-          placeholder="Email"
-          required
-          className="login-input"
-          name="email"
-          value={user.email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          required
-          className="login-input"
-          name="password"
-          value={user.password}
-          onChange={handleChange}
-        />
+        {/* Email input */}
+        <div className="input-wrapper">
+          <label htmlFor="email" className="input-label">
+            Email
+          </label>
+          <input
+            type="email"
+            placeholder="Email"
+            required
+            className="login-input"
+            name="email"
+            id="email"
+            value={user.email}
+            onChange={handleChange}
+          />
+        </div>
 
-        <button type="submit" className="login-button" onClick={login}>
+        {/* Password input */}
+        <div className="input-wrapper">
+          <label htmlFor="password" className="input-label">
+            Password
+          </label>
+          <input
+            type="password"
+            placeholder="Password"
+            required
+            className="login-input"
+            name="password"
+            id="password"
+            value={user.password}
+            onChange={handleChange}
+          />
+        </div>
+
+        <button type="submit" className="login-button">
           Login
         </button>
       </form>

@@ -55,7 +55,7 @@
   object-fit: contain;
   height: 200px;
   width: auto;
-  margin-left: 21px;
+  margin-left: 5px;
 }
 
 .darkmode-icon {
@@ -141,10 +141,11 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
   text-align: center; /* Add this to align text to the left */
   padding: 8px; /* Add some padding to the dropdown container */
+  background-color: #f7f4f4;
 }
 
 .dropdown1 ul {
-  list-style-type:none;
+  list-style-type: none;
   padding: 0;
   margin: 0;
 }
@@ -167,6 +168,7 @@
   cursor: pointer;
   width: 100%; /* Make the button full-width */
   text-align: center; /* Center the button text */
+  border-radius: 21px;
 }
 
 .dropdown1 button:hover {
@@ -177,7 +179,11 @@
   background-color: #3e8e41;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
-
+.avatarlogo {
+  padding-left: 67px;
+  padding-bottom: 17px;
+  height: 44px;
+}
 @media only screen and (max-width: 700px) {
   /* General Mobile Optimizations */
   body {

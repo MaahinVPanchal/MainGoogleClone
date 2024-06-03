@@ -11,11 +11,9 @@ import Login from "./pages/Login";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [avatarUrl, setAvatarUrl] = useState("./images/Avatar.jpg"); 
 
   const handleLogin = () => {
     setIsAuthenticated(true);
-    setAvatarUrl("./images/newAvatar.jpg"); // Update avatar URL after login
   };
 
   return (
@@ -27,8 +25,13 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/videos" element={<VideoPage />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login onLogin={handleLogin} />} />
-          <Route path="/" element={<Home avatarUrl={avatarUrl} />} />
+          <Route
+            path="/login"
+            element={
+              <Login onLogin={handleLogin} isAuthenticated={isAuthenticated} />
+            }
+          />
+          <Route path="/" element={<Home />} />
         </Routes>
       </Router>
     </div>
