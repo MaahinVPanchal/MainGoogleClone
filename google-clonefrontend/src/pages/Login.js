@@ -14,20 +14,21 @@ const Login = ({ onLogin }) => {
 
   const handleLogin = (event) => {
     event.preventDefault();
-    login(); // Call login function instead of onLogin
+    login();
   };
 
   const login = () => {
     axios
       .post("http://localhost:9002/login", user)
       .then((res) => {
-        navigate("/");
-        alert(res.data.message);
         if (res.data.success) {
-          onLogin(); // Call onLogin only if login is successful
-          console.log("Login successful");
+          navigate("/");
+          onLogin(res.data.user); // Pass the user data to onLogin
+
+          alert(res.data.message);
         } else {
           console.error("Login failed:", res.data.message);
+          alert(res.data.message);
         }
       })
       .catch((error) => {
@@ -49,7 +50,6 @@ const Login = ({ onLogin }) => {
       <img src={loginImage} alt="Login illustration" className="login-image" />
       <h1 className="login-header">Login</h1>
       <form onSubmit={handleLogin} className="login-form">
-        {/* Email input */}
         <div className="input-wrapper">
           <label htmlFor="email" className="input-label">
             Email
@@ -66,7 +66,6 @@ const Login = ({ onLogin }) => {
           />
         </div>
 
-        {/* Password input */}
         <div className="input-wrapper">
           <label htmlFor="password" className="input-label">
             Password

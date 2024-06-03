@@ -11,9 +11,11 @@ import Login from "./pages/Login";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
 
-  const handleLogin = () => {
+  const handleLogin = (userData) => {
     setIsAuthenticated(true);
+    setUser(userData);
   };
 
   return (
@@ -31,7 +33,10 @@ function App() {
               <Login onLogin={handleLogin} isAuthenticated={isAuthenticated} />
             }
           />
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={<Home user={user} isAuthenticated={isAuthenticated} />}
+          />
         </Routes>
       </Router>
     </div>

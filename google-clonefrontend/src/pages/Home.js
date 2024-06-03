@@ -24,7 +24,7 @@ import google_logo from "../images/google_logo2.png";
 import DarkModeIcon from "@mui/icons-material/DarkMode";
 import { useNavigate } from "react-router-dom";
 
-const Home = ({ avatarUrl }) => {
+const Home = () => {
   const [isOpen, setIsOpen] = useState(false); // State for dropdown visibility
   const [isOpen1, setIsOpen1] = useState(false); // State for dropdown visibility
   const [theme, setTheme] = useState("light-theme");
